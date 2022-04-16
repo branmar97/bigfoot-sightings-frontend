@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchReports } from '../actions/reportActions';
 
+import Reports from '../components/Reports';
+
 const ReportsContainer = ({ fetchReports, reports }) => {
     useEffect(() => {
         fetchReports()
@@ -9,7 +11,8 @@ const ReportsContainer = ({ fetchReports, reports }) => {
      
     return ( 
         <div>
-            <h2>Reports Container</h2>
+            <h2>All Reports</h2>
+            <Reports reports={reports} />
         </div>
     );
 
@@ -17,7 +20,7 @@ const ReportsContainer = ({ fetchReports, reports }) => {
 
 const mapStateToProps = state => {
     return {
-        reports: state.reports
+        reports: state.all
     }
 }
 
