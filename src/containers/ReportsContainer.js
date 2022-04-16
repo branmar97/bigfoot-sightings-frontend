@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchReports } from '../actions/reportActions';
 
 const ReportsContainer = ({ fetchReports, reports }) => {
-
+    useEffect(() => {
+        fetchReports()
+    }, [])
      
     return ( 
         <div>
