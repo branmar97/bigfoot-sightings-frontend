@@ -1,6 +1,7 @@
 import manageReports from '../reducers/reportReducer';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 
-const store = createStore(manageReports);
+const store = createStore(manageReports, applyMiddleware(thunk));
 
 export default store;
