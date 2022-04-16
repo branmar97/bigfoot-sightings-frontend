@@ -2,11 +2,16 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import ReportsContainer from './containers/ReportsContainer';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Bigfoot App</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <Route path="/reports" component={ReportsContainer} />
+      </div>
+    </Router>
   );
 }
 
