@@ -24,7 +24,7 @@ const Reports = ({ reports }) => {
 
     return ( 
         <div>
-            {listLobbies()}
+            {listReports()}
         </div>
      );
 }
