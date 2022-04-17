@@ -12,7 +12,7 @@ export const fetchReports = () => {
 } 
 
 // Create a new report
-export const createReport = () => {
+export const createReport = (data) => {
   return (dispatch) => {
     return fetch(`http://localhost:3000/api/v1/reports`, {
       method: 'POST',
