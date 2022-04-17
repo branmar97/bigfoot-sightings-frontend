@@ -21,6 +21,10 @@ const ReportFormContainer = () => {
         }
     )
 
+    const handleOnChange = event => {
+        setFormData({...formData, [event.target.name]: event.target.value })
+    }
+
     return (
         <div>
             <form>
@@ -28,22 +32,23 @@ const ReportFormContainer = () => {
                 <label for="occurence">Time of Occurence: </label>
                 <input type="datetime-local" id="occurence-field"
                 name="occurence" value={formData.occurence}
-                min="2018-06-07T00:00" max="2018-06-14T00:00" />
+                onChange={handleOnChange} />
 
                 <label for="city">City: </label>
-                <input type="text" name="city" id="city-field" value={formData.city} />
+                <input type="text" name="city" id="city-field" value={formData.city}  onChange={handleOnChange} />
 
                 <label for="state">State: </label>
-                <input type="text" name="state" id="state-field" value={formData.state} />
+                <input type="text" name="state" id="state-field" value={formData.state} onChange={handleOnChange} />
 
                 <label for="witnesses">Number of Witnesses: </label>
-                <input type="number" id="witnesses-field" name="witnesses" value={formData.witnesses} />
+                <input type="number" id="witnesses-field" name="witnesses" value={formData.witnesses} onChange={handleOnChange} />
 
                 <label htmlFor='vicinity'>Vicinity: </label>
                 <textarea 
                 name="vicinity"
                 placeholder="Details on relative location"
                 value={formData.vicinity}
+                onChange={handleOnChange}
                 />
 
                 <label htmlFor="conditions">Conditions: </label>
@@ -51,12 +56,14 @@ const ReportFormContainer = () => {
                 name="conditions"
                 placeholder="Weather, visibility, etc."
                 value={formData.conditions}
+                onChange={handleOnChange}
                 />
 
                 <label htmlFor="evidence">Evidence: </label>
                 <textarea 
                 name="evidence"
                 value={formData.evidence}
+                onChange={handleOnChange}
                 />
 
                 <label htmlFor="account">Account: </label>
@@ -64,6 +71,7 @@ const ReportFormContainer = () => {
                 name="account"
                 placeholder="General details about the sighting"
                 value={formData.account}
+                onChange={handleOnChange}
                 />
 
                 <label htmlFor="prints">Prints: </label>
@@ -71,6 +79,7 @@ const ReportFormContainer = () => {
                 name="prints"
                 placeholder="If no prints, enter 'None'"
                 value={formData.prints}
+                onChange={handleOnChange}
                 />
 
                 <label htmlFor="sounds">Sounds: </label>
@@ -78,13 +87,15 @@ const ReportFormContainer = () => {
                 name="sounds"
                 placeholder="If no sounds, enter 'None'"
                 value={formData.sounds}
+                onChange={handleOnChange}
                 />
 
                 <label htmlFor="additional-info">Additional Details: </label>
                 <textarea 
-                name="additional-info"
+                name="additionalInfo"
                 placeholder="If no additional details, enter 'None'"
                 value={formData.additionalInfo}
+                onChange={handleOnChange}
                 />
 
                 <button type="submit">Submit Report</button>
