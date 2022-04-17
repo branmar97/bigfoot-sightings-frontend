@@ -1,7 +1,8 @@
 import manageReports from '../reducers/reportReducer';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
-const store = createStore(manageReports, applyMiddleware(thunk));
+const store = createStore(manageReports, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store;
