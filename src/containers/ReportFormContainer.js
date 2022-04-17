@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { createReport } from '../actions/reportActions';
 
-const ReportFormContainer = () => {
+const ReportFormContainer = ({ createReport }) => {
     // Use to track the current input of the form
     const [formData, setFormData] = useState(
         {
@@ -21,13 +20,41 @@ const ReportFormContainer = () => {
         }
     )
 
+    const handleOnSubmit = event => {
+        event.preventDefault()
+        const report = {
+            occurence: formData.occurence,
+            city: formData.city,
+            state: formData.state,
+            vicinity: formData.vicinity,
+            conditions: formData.conditions,
+            witnesses: formData.witnesses,
+            evidence: formData.evidence,
+            account: formData.account,
+            prints: formData.prints,
+            sounds: formData.sounds,
+            additional_info: formData.additionalInfo
+        }
+        createReport(report)
+        .then(() => {
+            event.target.reset()
+        })
+        .catch((error) => {
+            setFormData({
+                ...formData,
+                error: true,
+                errorMessage: error
+            })
+        })
+    }
+
     const handleOnChange = event => {
         setFormData({...formData, [event.target.name]: event.target.value })
     }
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleOnSubmit}>
                 <h2>Report a Sighting</h2>
                 <label for="occurence">Time of Occurence: </label>
                 <input type="datetime-local" id="occurence-field"
