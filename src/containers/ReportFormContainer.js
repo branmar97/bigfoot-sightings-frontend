@@ -98,21 +98,29 @@ const ReportFormContainer = ({ createReport }) => {
                                     </div>
                                 </div>
 
-                                <label htmlFor='vicinity'>Vicinity: </label>
-                                <textarea 
-                                name="vicinity"
-                                placeholder="Details on relative location"
-                                value={formData.vicinity}
-                                onChange={handleOnChange}
-                                />
-
-                                <label htmlFor="conditions">Conditions: </label>
-                                <textarea 
-                                name="conditions"
-                                placeholder="Weather, visibility, etc."
-                                value={formData.conditions}
-                                onChange={handleOnChange}
-                                />
+                                <div>
+                                    <label htmlFor='vicinity' className="block text-sm font-medium text-gray-700">Vicinity</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="vicinity"
+                                        placeholder="Details on relative location"
+                                        value={formData.vicinity}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label htmlFor="conditions">Conditions: </label>
+                                    <textarea 
+                                    name="conditions"
+                                    placeholder="Weather, visibility, etc."
+                                    value={formData.conditions}
+                                    onChange={handleOnChange}
+                                    />
+                                </div>
 
                                 <label htmlFor="evidence">Evidence: </label>
                                 <textarea 
