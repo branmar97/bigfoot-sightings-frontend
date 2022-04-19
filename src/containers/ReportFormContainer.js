@@ -133,19 +133,25 @@ const ReportFormContainer = ({ createReport }) => {
                                         name="evidence"
                                         value={formData.evidence}
                                         onChange={handleOnChange}
-                                        rows="2" 
+                                        rows="4" 
                                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                         />
                                     </div>
                                 </div>
-
-                                <label htmlFor="account">Account: </label>
-                                <textarea 
-                                name="account"
-                                placeholder="General details about the sighting"
-                                value={formData.account}
-                                onChange={handleOnChange}
-                                />
+                                
+                                <div>
+                                    <label htmlFor="account" className="block text-sm font-medium text-gray-700">Account</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="account"
+                                        placeholder="General details about the sighting"
+                                        value={formData.account}
+                                        onChange={handleOnChange}
+                                        rows="4" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
                                 <label htmlFor="prints">Prints: </label>
                                 <textarea 
