@@ -126,12 +126,18 @@ const ReportFormContainer = ({ createReport }) => {
                                     </div>
                                 </div>
 
-                                <label htmlFor="evidence">Evidence: </label>
-                                <textarea 
-                                name="evidence"
-                                value={formData.evidence}
-                                onChange={handleOnChange}
-                                />
+                                <div>
+                                    <label htmlFor="evidence" className="block text-sm font-medium text-gray-700">Evidence</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="evidence"
+                                        value={formData.evidence}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
                                 <label htmlFor="account">Account: </label>
                                 <textarea 
