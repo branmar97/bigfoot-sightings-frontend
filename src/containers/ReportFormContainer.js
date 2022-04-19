@@ -167,13 +167,19 @@ const ReportFormContainer = ({ createReport }) => {
                                     </div>
                                 </div>
 
-                                <label htmlFor="sounds">Sounds: </label>
-                                <textarea 
-                                name="sounds"
-                                placeholder="If no sounds, enter 'None'"
-                                value={formData.sounds}
-                                onChange={handleOnChange}
-                                />
+                                <div>
+                                    <label htmlFor="sounds" className="block text-sm font-medium text-gray-700">Sounds</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="sounds"
+                                        placeholder="If no sounds, enter 'N/A'"
+                                        value={formData.sounds}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
                                 <label htmlFor="additional-info">Additional Details: </label>
                                 <textarea 
