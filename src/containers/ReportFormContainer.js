@@ -181,15 +181,23 @@ const ReportFormContainer = ({ createReport }) => {
                                     </div>
                                 </div>
 
-                                <label htmlFor="additional-info">Additional Details: </label>
-                                <textarea 
-                                name="additionalInfo"
-                                placeholder="If no additional details, enter 'None'"
-                                value={formData.additionalInfo}
-                                onChange={handleOnChange}
-                                />
+                                <div>
+                                    <label htmlFor="additional-info" className="block text-sm font-medium text-gray-700">Additional Details</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="additionalInfo"
+                                        placeholder="If no additional details, enter 'N/A'"
+                                        value={formData.additionalInfo}
+                                        onChange={handleOnChange}
+                                        rows="4" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
-                                <button type="submit">Submit Report</button>
+                                <div class="px-4 py-3 text-right sm:px-6">
+                                    <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit Report</button>
+                                </div>
                             </div>
                         </div>
                     </form>
