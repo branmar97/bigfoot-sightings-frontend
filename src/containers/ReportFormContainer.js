@@ -16,12 +16,13 @@ const ReportFormContainer = ({ createReport }) => {
             sounds: "",
             additionalInfo: "",
             error: false,
-            errorMessage: {}
+            errorMessage: {} // holds error messages from the database received by rejected Report promise
         }
     )
 
     const handleOnSubmit = event => {
         event.preventDefault()
+        // create report object to post to database
         const report = {
             occurence: formData.occurence,
             city: formData.city,
@@ -35,10 +36,12 @@ const ReportFormContainer = ({ createReport }) => {
             sounds: formData.sounds,
             additional_info: formData.additionalInfo
         }
+        // submit report to database
         createReport(report)
         .then(() => {
-            event.target.reset()
+            event.target.reset() // reset all form fields
         })
+        // used to display error messages on reject
         .catch((error) => {
             setFormData({
                 ...formData,
@@ -49,84 +52,175 @@ const ReportFormContainer = ({ createReport }) => {
     }
 
     const handleOnChange = event => {
+        // DRY form change handler
         setFormData({...formData, [event.target.name]: event.target.value })
     }
 
     return (
         <div>
-            <form onSubmit={handleOnSubmit}>
-                <h2 className="text-2xl font-bold underline">Report a Sighting</h2>
-                <label for="occurence">Time of Occurence: </label>
-                <input type="datetime-local" id="occurence-field"
-                name="occurence" value={formData.occurence}
-                onChange={handleOnChange} />
+            <h2 className="text-2xl font-bold underline mb-5">Report a Sighting</h2>
+            <div className="md:grid md:grid-cols-3 md:gap-6">
+                <div className="mt-5 md:mt-0 md:col-span-2">
+                    {/* Report form opening tag */}
+                    <form onSubmit={handleOnSubmit}>
+                        <div className="shadow sm:rounded-md sm:overflow-hidden">
+                            <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
 
-                <label for="city">City: </label>
-                <input type="text" name="city" id="city-field" value={formData.city}  onChange={handleOnChange} />
+                                {/* Date field */}
+                                <div className="grid grid-cols-3 gap-6">
+                                    <div className="col-span-3 sm:col-span-2">
+                                        <label for="occurence" className="block text-sm font-medium text-gray-700">Time of Occurence</label>
+                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                            <input type="datetime-local" id="occurence-field"
+                                            name="occurence" value={formData.occurence}
+                                            onChange={handleOnChange} />
+                                        </div>
+                                    </div>
+                                </div>
 
-                <label for="state">State: </label>
-                <input type="text" name="state" id="state-field" value={formData.state} onChange={handleOnChange} />
+                                {/* City input field */}
+                                <div className="grid grid-cols-3 gap-6">
+                                    <div className="col-span-3 sm:col-span-2">
+                                        <label for="city" className="block text-sm font-medium text-gray-700">City</label>
+                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                            <input type="text" name="city" id="city-field" value={formData.city}  onChange={handleOnChange} />
+                                        </div>
+                                    </div>
+                                </div>
 
-                <label for="witnesses">Number of Witnesses: </label>
-                <input type="number" id="witnesses-field" name="witnesses" value={formData.witnesses} onChange={handleOnChange} />
+                                {/* State input field */}
+                                <div className="grid grid-cols-3 gap-6">
+                                    <div className="col-span-3 sm:col-span-2">
+                                        <label for="state" className="block text-sm font-medium text-gray-700">State</label>
+                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                            <input type="text" name="state" id="state-field" value={formData.state} onChange={handleOnChange} />
+                                        </div>
+                                    </div>
+                                </div>
 
-                <label htmlFor='vicinity'>Vicinity: </label>
-                <textarea 
-                name="vicinity"
-                placeholder="Details on relative location"
-                value={formData.vicinity}
-                onChange={handleOnChange}
-                />
+                                {/* Witnesses input field */}
+                                <div className="grid grid-cols-3 gap-6">
+                                    <div className="col-span-3 sm:col-span-2">
+                                        <label for="witnesses" className="block text-sm font-medium text-gray-700"># Witnesses</label>
+                                        <div className="mt-1 flex rounded-md shadow-sm">
+                                            <input type="number" id="witnesses-field" name="witnesses" value={formData.witnesses} onChange={handleOnChange} />
+                                        </div>
+                                    </div>
+                                </div>
 
-                <label htmlFor="conditions">Conditions: </label>
-                <textarea 
-                name="conditions"
-                placeholder="Weather, visibility, etc."
-                value={formData.conditions}
-                onChange={handleOnChange}
-                />
+                                {/* Vicinity input field */}
+                                <div>
+                                    <label htmlFor='vicinity' className="block text-sm font-medium text-gray-700">Vicinity</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="vicinity"
+                                        placeholder="Details on relative location"
+                                        value={formData.vicinity}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                {/* Conditions textarea field */}
+                                <div>
+                                    <label htmlFor="conditions" className="block text-sm font-medium text-gray-700">Conditions</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="conditions"
+                                        placeholder="Weather, visibility, etc."
+                                        value={formData.conditions}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
-                <label htmlFor="evidence">Evidence: </label>
-                <textarea 
-                name="evidence"
-                value={formData.evidence}
-                onChange={handleOnChange}
-                />
+                                {/* Evidence textarea field */}
+                                <div>
+                                    <label htmlFor="evidence" className="block text-sm font-medium text-gray-700">Evidence</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="evidence"
+                                        value={formData.evidence}
+                                        onChange={handleOnChange}
+                                        rows="4" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                {/* Account textarea field */}
+                                <div>
+                                    <label htmlFor="account" className="block text-sm font-medium text-gray-700">Account</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="account"
+                                        placeholder="General details about the sighting"
+                                        value={formData.account}
+                                        onChange={handleOnChange}
+                                        rows="4" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
-                <label htmlFor="account">Account: </label>
-                <textarea 
-                name="account"
-                placeholder="General details about the sighting"
-                value={formData.account}
-                onChange={handleOnChange}
-                />
+                                {/* Prints textarea field */}
+                                <div>
+                                    <label htmlFor="prints" className="block text-sm font-medium text-gray-700">Prints</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="prints"
+                                        placeholder="If no prints, enter 'N/A'"
+                                        value={formData.prints}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
-                <label htmlFor="prints">Prints: </label>
-                <textarea 
-                name="prints"
-                placeholder="If no prints, enter 'None'"
-                value={formData.prints}
-                onChange={handleOnChange}
-                />
+                                {/* Sounds textarea field */}
+                                <div>
+                                    <label htmlFor="sounds" className="block text-sm font-medium text-gray-700">Sounds</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="sounds"
+                                        placeholder="If no sounds, enter 'N/A'"
+                                        value={formData.sounds}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
-                <label htmlFor="sounds">Sounds: </label>
-                <textarea 
-                name="sounds"
-                placeholder="If no sounds, enter 'None'"
-                value={formData.sounds}
-                onChange={handleOnChange}
-                />
+                                {/* Additional details textarea field */}
+                                <div>
+                                    <label htmlFor="additional-info" className="block text-sm font-medium text-gray-700">Additional Details</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="additionalInfo"
+                                        placeholder="If no additional details, enter 'N/A'"
+                                        value={formData.additionalInfo}
+                                        onChange={handleOnChange}
+                                        rows="4" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
-                <label htmlFor="additional-info">Additional Details: </label>
-                <textarea 
-                name="additionalInfo"
-                placeholder="If no additional details, enter 'None'"
-                value={formData.additionalInfo}
-                onChange={handleOnChange}
-                />
-
-                <button type="submit">Submit Report</button>
-            </form>
+                                {/* Submit button */}
+                                <div class="px-4 py-3 text-right sm:px-6">
+                                    <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit Report</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 }
