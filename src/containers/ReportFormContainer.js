@@ -55,7 +55,7 @@ const ReportFormContainer = ({ createReport }) => {
     return (
         <div>
             <form onSubmit={handleOnSubmit}>
-                <h2>Report a Sighting</h2>
+                <h2 className="text-4xl font-bold underline">Report a Sighting</h2>
                 <label for="occurence">Time of Occurence: </label>
                 <input type="datetime-local" id="occurence-field"
                 name="occurence" value={formData.occurence}
