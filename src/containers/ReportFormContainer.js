@@ -153,13 +153,19 @@ const ReportFormContainer = ({ createReport }) => {
                                     </div>
                                 </div>
 
-                                <label htmlFor="prints">Prints: </label>
-                                <textarea 
-                                name="prints"
-                                placeholder="If no prints, enter 'None'"
-                                value={formData.prints}
-                                onChange={handleOnChange}
-                                />
+                                <div>
+                                    <label htmlFor="prints" className="block text-sm font-medium text-gray-700">Prints</label>
+                                    <div className="mt-1">
+                                        <textarea 
+                                        name="prints"
+                                        placeholder="If no prints, enter 'N/A'"
+                                        value={formData.prints}
+                                        onChange={handleOnChange}
+                                        rows="2" 
+                                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                        />
+                                    </div>
+                                </div>
 
                                 <label htmlFor="sounds">Sounds: </label>
                                 <textarea 
