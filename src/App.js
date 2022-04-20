@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="mt-20 flex items-center justify-center">
         <ReportsContainer />
       </div>
     </Router>

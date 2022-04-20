@@ -6,20 +6,20 @@ const ReportCard = ({ id, caseNum, occurence, city, state, vicinity, conditions,
     
     // display individual report data
     return (
-        <div> 
-            <h3><strong>Case #</strong>: {caseNum}</h3>
-            <ul>
-                <li>{city}, {state}</li>
-                <li><strong>Occurence</strong>: {occurence}</li>
-                <li><strong>Vicinity</strong>: {vicinity}</li>
-                <li><strong>Witnesses</strong>: {witnesses}</li>
+        <div className="mt-5 mb-5"> 
+            <ul className="bg-white p-4 rounded divide-y divide-gray-700 divide-opacity-25">
+                <li className="px-4 py-2"><h3><strong>Case #</strong>: {caseNum}</h3></li>
+                <li className="px-4 py-2">{city}, {state}</li>
+                <li className="px-4 py-2"><strong>Occurence</strong>: {occurence}</li>
+                <li className="px-4 py-2"><strong>Vicinity</strong>: {vicinity}</li>
+                <li className="px-4 py-2"><strong>Witnesses</strong>: {witnesses}</li>
+                <li className="px-4 py-2"><strong>Conditions</strong>: {conditions}</li>
+                <li className="px-4 py-2"><strong>Evidence</strong>: {evidence}</li>
+                <li className="px-4 py-2"><strong>Account</strong>: {account}</li>
+                <li className="px-4 py-2"><strong>Prints</strong>: {prints}</li>
+                <li className="px-4 py-2"><strong>Sounds</strong>: {sounds}</li>
+                <li className="px-4 py-2"><strong>Additional Info</strong>: {additionalInfo}</li>
             </ul>
-            <p><strong>Conditions</strong>: {conditions}</p>
-            <p><strong>Evidence</strong>: {evidence}</p>
-            <p><strong>Account</strong>: {account}</p>
-            <p><strong>Prints</strong>: {prints}</p>
-            <p><strong>Sounds</strong>: {sounds}</p>
-            <p><strong>Additional Info</strong>: {additionalInfo}</p>
         </div>
     );
 }
