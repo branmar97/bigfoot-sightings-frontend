@@ -24,7 +24,7 @@ const Reports = ({ reports }) => {
 
     return ( 
         <div>
-            {listReports()}
+            {listReports().reverse()}
         </div>
      );
 }
