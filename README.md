@@ -24,7 +24,7 @@ NOTE: Be sure to clone the [backend-repo](https://github.com/branmar97/bigfoot-s
 
 ## Contributing
 
-Bug reports and pull requests are welcome on Github at https://github.com/branmar97/apexlink-frontend
+Bug reports and pull requests are welcome on Github at https://github.com/branmar97/bigfoot-sightings-frontend
 
 ## License
 
