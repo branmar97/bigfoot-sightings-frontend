@@ -6,9 +6,9 @@ const ReportCard = ({ id, caseNum, occurence, city, state, vicinity, conditions,
     
     // display individual report data
     return (
-        <div className="mt-5 mb-5"> 
+        <div className="mt-10 mb-20"> 
             <ul className="bg-white p-4 rounded divide-y divide-gray-700 divide-opacity-25">
-                <li className="px-4 py-2"><h3><strong>Case #</strong>: {caseNum}</h3></li>
+                <li className="px-4 py-2 text-xl"><h3><strong>Case #</strong>: {caseNum}</h3></li>
                 <li className="px-4 py-2">{city}, {state}</li>
                 <li className="px-4 py-2"><strong>Occurence</strong>: {occurence}</li>
                 <li className="px-4 py-2"><strong>Vicinity</strong>: {vicinity}</li>
