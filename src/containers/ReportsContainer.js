@@ -11,7 +11,7 @@ const ReportsContainer = ({ fetchReports, createReport, reports }) => {
     }, [])
      
     return ( 
-        <div className="bg-gray-200 p-4 rounded w-11/12">
+        <div className="bg-gray-200 p-16 rounded w-11/12">
             <div>
                 <ReportFormContainer createReport={createReport} />
             </div>
